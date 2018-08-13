@@ -1,13 +1,12 @@
 package com.zzx;
 
 
+import java.sql.SQLException;
 
 public class Main extends Thread{
 
     public static void main(String[] args) throws Exception {
-	System.out.println("asdas");
-	msg s1=new msg();
-	new Main().start();
+	    new Main().start();
     }
     public void run() {
         while (true) {
@@ -15,21 +14,42 @@ public class Main extends Thread{
             int nextWeek=0;
             int hour = gt.getHour();
             int nowweekday = gt.getWeekday();
+            int nowweek  =  gt.getWeek();
             int minute = gt.getMinute();
             if((hour==7||hour==9||hour==13||hour==15||hour==18)&&minute==20){
-//                当天课程通知
-                db db1 = new db();
+//                当天
                 String sql = String .format("select name,stime,etime,place,teacher from 16se3 where " +
-                        "shour=%d and week=%d",hour+1,nowweekday);
+                        "shour=%d and week=%d and " +
+                        "sweek<%d and eweek >%d",hour+1,nowweekday,nowweek,nowweek);
+                System.out.println(sql);
+
+                db db1 = new db();
+                db1.dbConnect(sql);
+
+                try {
+                    db1.db2msgNextHour();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
 
             }
             if(hour==21&&minute==30){
-//                第二天课程汇总
+//                次日
                 if(nowweekday<=6){ nextWeek=nowweekday+1;}
                 if(nowweekday==7){ nextWeek=1;}
-                String sql = String.format("select name,stime,etime,place,teacher from 16se3 where week=%d",nextWeek);
+                String sql = String.format("select name,stime,etime,place,teacher " +
+                        "from 16se3 where week=%d",nextWeek);//构造sql查询
+                System.out.println(sql);
+
                 db db2 = new db();
                 db2.dbConnect(sql);
+
+                try {
+                    db2.db2msgNextDay();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
 
             }
             try {

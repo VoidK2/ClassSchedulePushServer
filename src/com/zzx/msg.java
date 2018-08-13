@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 public class msg {
-    public void pushmsg(String titletext,String contenttext,String expandcontext) throws Exception {
+    public void pushmsg(String titleText,String contentText,String expandContext,int expandType) throws Exception {
         //推送对象
         String appsecret="fcec639c756b415da30e47237b8bc35e";
         IFlymePush push = new IFlymePush(appsecret,false);
@@ -23,10 +23,10 @@ public class msg {
         //通知栏信息
         VarnishedMessage message = new VarnishedMessage.Builder().appId(appid1)
 //                .restrictedPackageNames(new String[]{"com.xxx.abc"})//多包名推送时才需配置，不填表示所有
-                .title(titletext).content(contenttext)
+                .title(titleText).content(contentText)
                 .noticeBarType(2)
-                .noticeExpandType(1)
-                .noticeExpandContent(expandcontext)
+                .noticeExpandType(expandType)
+                .noticeExpandContent(expandContext)
                 .clickType(2).url("http://www.baidu.com").parameters(JSON.parseObject("{\"k1\":\"value1\",\"k2\":0,\"k3\":\"value3\"}"))
                 .offLine(true).validTime(24)
                 .suspend(true).clearNoticeBar(true).vibrate(true).lights(true).sound(true)
