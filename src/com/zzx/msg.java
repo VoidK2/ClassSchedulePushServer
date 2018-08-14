@@ -31,6 +31,7 @@ public class msg {
                 .offLine(true).validTime(24)
                 .suspend(true).clearNoticeBar(true).vibrate(true).lights(true).sound(true)
                 .build();
+        System.out.println("推送信息"+titleText+" "+contentText);
 
         //目标用户
         String usr1="RA50c63430b6b44485c0576637b537a63740560410462";

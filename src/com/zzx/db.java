@@ -4,26 +4,26 @@ import java.sql.*;
 public class db {
     private Connection conn;
     private Statement stmt;
-    private ResultSet rs;
-    private String titletext;
-    private String contenttext;
-    private String expandcontext;
-    private int expandType;
+    public ResultSet rs = null;
+    private String titletext = null;
+    private String contenttext = null;
+    private String expandcontext = null;
+    private int expandType = 0;
 //    展开方式 (0, "标准"),(1, "文本")
     public void dbConnect(String sql) {
 
         String DB_URL = "jdbc:mysql://34.236.145.58:3306/CT";
         String USER = "root";
-        String PASS = "123456";
+        String PASS = "270400";
 
         try{
             // 注册 JDBC 驱动
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
 
             // 打开链接
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
             stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery(sql);
+            rs = stmt.executeQuery(sql);
             System.out.println("---已查询数据库---");
         }catch(Exception e){
             e.printStackTrace();
@@ -31,7 +31,7 @@ public class db {
     }
 
     public void db2msgNextDay() throws Exception {
-        if(rs.next()==true){
+        if(rs.next()){
             titletext = "明天有课(,,•́ . •̀,,)早点休息";
             contenttext = rs.getString("name")
                     +" "+rs.getInt("stime")
@@ -56,12 +56,12 @@ public class db {
             expandType = 0;
             expandcontext = null;
 
-            msg s1 = new msg();
-            s1.pushmsg(titletext,contenttext,expandcontext,expandType);
         }
+        msg s1 = new msg();
+        s1.pushmsg(titletext,contenttext,expandcontext,expandType);
     }
     public void db2msgNextHour() throws Exception {
-        if(rs.next()==true){
+        if(rs.next()){
             titletext = rs.getString("name");
             contenttext = rs.getInt("stime")
                     +"-"+rs.getInt("etime")

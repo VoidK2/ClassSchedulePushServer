@@ -1,7 +1,7 @@
 package com.zzx;
 
 
-import java.sql.SQLException;
+import java.util.logging.*;
 
 public class Main extends Thread{
 
@@ -16,6 +16,11 @@ public class Main extends Thread{
             int nowweekday = gt.getWeekday();
             int nowweek  =  gt.getWeek();
             int minute = gt.getMinute();
+
+            System.out.println("hour"+hour);
+            System.out.println("nowweekday"+nowweekday);
+            System.out.println("nowweek"+nowweek);
+            System.out.println("minute"+minute);
             if((hour==7||hour==9||hour==13||hour==15||hour==18)&&minute==20){
 //                当天
                 String sql = String .format("select name,stime,etime,place,teacher from 16se3 where " +
