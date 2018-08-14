@@ -17,15 +17,12 @@ public class Main extends Thread{
             int nowweek  =  gt.getWeek();
             int minute = gt.getMinute();
 
-            System.out.println("hour"+hour);
-            System.out.println("nowweekday"+nowweekday);
-            System.out.println("nowweek"+nowweek);
-            System.out.println("minute"+minute);
+            System.out.println("时间"+hour+":"+minute+" 第"+nowweek+"周"+" 星期"+nowweekday);
             if((hour==7||hour==9||hour==13||hour==15||hour==18)&&minute==20){
 //                当天
                 String sql = String .format("select name,stime,etime,place,teacher from 16se3 where " +
                         "shour=%d and week=%d and " +
-                        "sweek<%d and eweek >%d",hour+1,nowweekday,nowweek,nowweek);
+                        "sweek<=%d and eweek>=%d",hour+1,nowweekday,nowweek,nowweek);
                 System.out.println(sql);
 
                 db db1 = new db();
