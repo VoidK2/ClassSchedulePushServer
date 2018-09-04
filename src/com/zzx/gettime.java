@@ -31,7 +31,7 @@ public class gettime {
         Date dt2 =new Date();
         SimpleDateFormat ftw = new SimpleDateFormat("w");
         int week = Integer.parseInt(ftw.format(dt2));
-        week = week - 29;
+        week = week - 35;
         return week;
     }
 }

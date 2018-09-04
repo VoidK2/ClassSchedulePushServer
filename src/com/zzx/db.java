@@ -12,7 +12,7 @@ public class db {
 //    展开方式 (0, "标准"),(1, "文本")
     public void dbConnect(String sql) {
 
-        String DB_URL = "jdbc:mysql://34.236.145.58:3306/CT";
+        String DB_URL = "jdbc:mysql://39.108.90.113:3306/ClassTable";
         String USER = "root";
         String PASS = "270400";
 
