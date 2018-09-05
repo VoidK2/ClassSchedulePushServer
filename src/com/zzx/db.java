@@ -14,7 +14,7 @@ public class db {
 
         String DB_URL = "jdbc:mysql://39.108.90.113:3306/ClassTable";
         String USER = "root";
-        String PASS = "270400";
+        String PASS = "ALIyun270400.";
 
         try{
             // 注册 JDBC 驱动

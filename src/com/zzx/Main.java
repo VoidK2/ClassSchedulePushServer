@@ -41,7 +41,8 @@ public class Main extends Thread{
                 if(nowweekday<=6){ nextWeek=nowweekday+1;}
                 if(nowweekday==7){ nextWeek=1;}
                 String sql = String.format("select name,stime,etime,place,teacher " +
-                        "from 16SoftwareEngineering3 where week=%d",nextWeek);//构造sql查询
+                        "from 16SoftwareEngineering3 where week=%d and " +
+                        "sweek<=%d and eweek>=%d",nextWeek,nowweek,nowweek);//构造sql查询
                 System.out.println(sql);
 
                 db db2 = new db();
