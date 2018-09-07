@@ -20,7 +20,7 @@ public class Main extends Thread{
             System.out.println("时间"+hour+":"+minute+" 第"+nowweek+"周"+" 星期"+nowweekday);
             if((hour==7||hour==9||hour==13||hour==15||hour==18)&&minute==20){
 //                当天
-                String sql = String .format("select name,stime,etime,place,teacher from 160409 where " +
+                String sql = String .format("select name,stime,etime,place,teacher from `160409` where " +
                         "shour=%d and week=%d and " +
                         "sweek<=%d and eweek>=%d",hour+1,nowweekday,nowweek,nowweek);
                 System.out.println(sql);
@@ -41,7 +41,7 @@ public class Main extends Thread{
                 if(nowweekday<=6){ nextWeek=nowweekday+1;}
                 if(nowweekday==7){ nextWeek=1;}
                 String sql = String.format("select name,stime,etime,place,teacher " +
-                        "from 160409 where week=%d and " +
+                        "from `160409` where week=%d and " +
                         "sweek<=%d and eweek>=%d",nextWeek,nowweek,nowweek);//构造sql查询
                 System.out.println(sql);
 
