@@ -70,6 +70,8 @@ public class db {
             expandType = 0;
             expandcontext = null;
         }
+        msg s2 = new msg();
+        s2.pushmsg(titletext,contenttext,expandcontext,expandType);
     }
 
 
