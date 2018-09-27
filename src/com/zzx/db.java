@@ -12,9 +12,9 @@ public class db {
 //    展开方式 (0, "标准"),(1, "文本")
     public void dbConnect(String sql) {
 
-        String DB_URL = "jdbc:mysql://39.108.90.113:3306/classtable";
+        String DB_URL = "jdbc:mysql://119.29.19.114:3306/classtable";
         String USER = "root";
-        String PASS = "ALIyun270400.";
+        String PASS = "ZZx270400.";
 
         try{
             // 注册 JDBC 驱动
